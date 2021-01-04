@@ -13,65 +13,12 @@
     margin-left: 18%;
     padding: 5px;
 }
-.pic-cotainer{
-    display: flex;
-    flex-wrap: wrap;
-   /* justify-content: space-around; */
-}
-.card-container{
-    background-color: #f1f1f1;
-    margin: 10px;
-    padding: 2px;
-    margin-left: 4.5em;
-  
-    width: 25%;
-    height: 24em;
-}
-img{
-    width: 315px;
-    height: 165px;
-}
-.likeSection{
-    flex-direction: row;
-    padding: 2px;
-    display: flex;
-    justify-content: space-between;
-}
-.like-count{
-    margin-left: 25px;
-    font-size: 20px;
-    color: red;
-    font-weight: 700;
-}
+
+
 .democlass{
     width: 800px;
     height: 400px;
 }
-.like{
-    margin-left: 11px;
-    font-size: 18px;
-    color: #1d8dec;
-    font-weight: 500;
-    border-bottom: 1.5px solid;
-}
-.post{
-       
-        margin-left: 4px;
-    
-        top: 3px;
-        position: relative;
-      
-        padding-left: 9px;
-        padding-right: 9px;
-        background-color: skyblue;
-}
-.list{
-    padding: 2px;
-    border: 1px solid black;
-    text-align: start;
-    margin-top: 2px;
-}
-
 
 /* The Modal (background) */
 .modal {

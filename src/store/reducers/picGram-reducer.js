@@ -50,70 +50,70 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 picGramData: { ...state.picGramData, pics: filterPicGramDataSearchText },
             };
-            case "ADD_LIKE":
-          
-            const addLikeCount=state.picGramData.pics.map(obj=>{
-            if(obj.id===action.payload.id){
-             return { ...obj,likes:obj.likes+1,like:true}
-            }
-            return obj
+        case "ADD_LIKE":
 
-            });
-            const backUplikeAdd=state.backUpData.pics.map(obj=>{
-                if(obj.id===action.payload.id){
-                 return { ...obj,likes:obj.likes+1,like:true}
+            const addLikeCount = state.picGramData.pics.map(obj => {
+                if (obj.id === action.payload.id) {
+                    return { ...obj, likes: obj.likes + 1, like: true }
                 }
                 return obj
-    
-                });
+
+            });
+            const backUplikeAdd = state.backUpData.pics.map(obj => {
+                if (obj.id === action.payload.id) {
+                    return { ...obj, likes: obj.likes + 1, like: true }
+                }
+                return obj
+
+            });
 
             return {
                 ...state,
                 picGramData: { ...state.picGramData, pics: addLikeCount },
                 backUpData: { ...state.backUpData, pics: backUplikeAdd },
             };
-            case "REMOVE_LIKE":
-                const RemoveLikeCount=state.picGramData.pics.map(obj=>{
-                    if(obj.id===action.payload.id){
-                     return { ...obj,likes:obj.likes-1,like:false}
-                    }
-                    return obj
-        
-                    });
-                    const backUplikeRemove=state.backUpData.pics.map(obj=>{
-                        if(obj.id===action.payload.id){
-                         return { ...obj,likes:obj.likes-1,like:false}
-                        }
-                        return obj
-            
-                        });
-             return {
+        case "REMOVE_LIKE":
+            const RemoveLikeCount = state.picGramData.pics.map(obj => {
+                if (obj.id === action.payload.id) {
+                    return { ...obj, likes: obj.likes - 1, like: false }
+                }
+                return obj
+
+            });
+            const backUplikeRemove = state.backUpData.pics.map(obj => {
+                if (obj.id === action.payload.id) {
+                    return { ...obj, likes: obj.likes - 1, like: false }
+                }
+                return obj
+
+            });
+            return {
                 ...state,
                 picGramData: { ...state.picGramData, pics: RemoveLikeCount },
                 backUpData: { ...state.backUpData, pics: backUplikeRemove }
             };
-            case "ADD_POST":
-                debugger
-                const addPost=state.picGramData.pics.map(obj=>{
-                    if(obj.id===action.payload.id){
-                     return {...obj,comments:[...obj.comments,action.payload.post]}
-                    }
-                    return obj
-        
-                    });
-                    const backUpPost=state.backUpData.pics.map(obj=>{
-                        if(obj.id===action.payload.id){
-                            return {...obj,comments:[...obj.comments,action.payload.post]}
-                        }
-                        return obj
-            
-                        });
-             return {
+        case "ADD_POST":
+
+            const addPost = state.picGramData.pics.map(obj => {
+                if (obj.id === action.payload.id) {
+                    return { ...obj, comments: [...obj.comments, action.payload.post] }
+                }
+                return obj
+
+            });
+            const backUpPost = state.backUpData.pics.map(obj => {
+                if (obj.id === action.payload.id) {
+                    return { ...obj, comments: [...obj.comments, action.payload.post] }
+                }
+                return obj
+
+            });
+            return {
                 ...state,
                 picGramData: { ...state.picGramData, pics: addPost },
                 backUpData: { ...state.backUpData, pics: backUpPost }
             };
-           
+
 
 
 

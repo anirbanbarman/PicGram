@@ -10,10 +10,10 @@ function App() {
   dispatch(picDataLoad());
   return (
     <div className="App">
- <Header/>
- <PicContainer/>
-        
-       
+      <Header />
+      <PicContainer />
+
+
     </div>
   );
 }
