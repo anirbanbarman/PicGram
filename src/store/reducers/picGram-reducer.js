@@ -23,23 +23,26 @@ export const reducer = (state = initialState, action) => {
                 backUpData: action.payload,
             };
         case "MOST_LIKED_PIC":
-            const filterPicGramData = state.backUpData.pics.reduce(function (prev, current) {
-                return (prev.likes > current.likes) ? prev : current
+           
+            const filterPicGramData = state.backUpData.pics.sort((a, b) =>{
+                return (b.likes - a.likes) 
             })
 
             return {
                 ...state,
-                picGramData: { ...state.picGramData, pics: [filterPicGramData] },
+                picGramData: { ...state.picGramData, pics: filterPicGramData },
             };
         case "MOST_COMMENT_PIC":
-            const filterPicGramDataComment = state.backUpData.pics.reduce(function (prev, current) {
-                return (prev.comments.length > current.comments.length) ? prev : current
+            
+            const filterPicGramDataComment = state.backUpData.pics.sort((a,b) =>{
+                return (b.comments.length - a.comments.length) 
             })
+
 
 
             return {
                 ...state,
-                picGramData: { ...state.picGramData, pics: [filterPicGramDataComment] },
+                picGramData: { ...state.picGramData, pics: filterPicGramDataComment },
             };
         case "SEARCH_BY_CATEGORY":
             const filterPicGramDataSearchText = state.backUpData.pics.filter((obj) => {
@@ -96,7 +99,7 @@ export const reducer = (state = initialState, action) => {
 
             const addPost = state.picGramData.pics.map(obj => {
                 if (obj.id === action.payload.id) {
-                    return { ...obj, comments: [...obj.comments, action.payload.post] }
+                    return { ...obj,post:"", comments: [...obj.comments, action.payload.post] }
                 }
                 return obj
 
@@ -113,6 +116,20 @@ export const reducer = (state = initialState, action) => {
                 picGramData: { ...state.picGramData, pics: addPost },
                 backUpData: { ...state.backUpData, pics: backUpPost }
             };
+            case "POST_TEXT_SAVE":
+              
+                const savePostText = state.picGramData.pics.map(obj => {
+                    if (obj.id === action.payload.id) {
+                        return { ...obj, post:action.payload.text }
+                    }
+                    return obj;
+    
+                });
+    
+                return {
+                    ...state,
+                    picGramData: { ...state.picGramData, pics: savePostText },
+                };
 
 
 

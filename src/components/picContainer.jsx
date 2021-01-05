@@ -7,8 +7,9 @@ import CardContainer from "./card-container/cardContainer";
 
 const PicContainer = (props) => {
     const dispatch = useDispatch();
+
     const picData = useSelector(state => state.picGramData);
-    const picCard = picData.pics.map((obj) => <CardContainer cardDetails={obj} />);
+    const picCard = picData.pics.map((obj) => <CardContainer key={obj.id} cardDetails={obj} />);
     const search = (value) => { dispatch(searchByCategory(value)) }
      return (
 

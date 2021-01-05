@@ -1,14 +1,17 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import {  addLike, removeLike, addPost } from '../../store/actions/picGram-action';
+import {  addLike, removeLike, addPost,postText } from '../../store/actions/picGram-action';
 import './cardContainer.css';
 
 const CardContainer = (props) => {
+  
     const dispatch = useDispatch();
-    const [post, setPost] = useState("");
     const clickLike = (value) => {dispatch(addLike(value))};
     const clickUnLike = (value) => {dispatch(removeLike(value))};
-    const addComment = (obj) => {post ? dispatch(addPost({ id: obj.id, post })) : alert("Enter your comment");}
+    const addComment = (obj) => {
+        obj.post ? dispatch(addPost({ id: obj.id, post:obj.post })) : alert("Enter your comment");
+  
+    }
     const openModal = (src) => {
   
         var modal = document.getElementById("myModal");
@@ -39,7 +42,7 @@ const CardContainer = (props) => {
 
 
             </div><div>{props.cardDetails.category}</div></div>
-            <div><input  style={{ "width": "80%" }} placeholder="type your comment here..." onChange={(e) => setPost(e.target.value)} /><span onClick={(e) => addComment(props.cardDetails)} className="post">Post</span></div>
+            <div><input  style={{ "width": "80%" }} placeholder="type your comment here..." value={props.cardDetails.post} onChange={(e) => dispatch(postText(props.cardDetails.id,e.target.value))} /><span onClick={(e) => addComment(props.cardDetails)} className="post">Post</span></div>
             <div style={{ padding: "4px", overflow: "auto", height: "9.5em" }}>
                 {props.cardDetails.comments.map((comments, key) =>
                     <div className="list" key={key}>{comments}</div>
